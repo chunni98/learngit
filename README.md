@@ -98,6 +98,12 @@ dev 分支用来开发。需要发布版本时，再把 dev 分支合并到 main
 现场。在其他分支修复的 bug，想要合并到 dev 分支，可通过
 `git cherry-pick <commit>` 命令复制，避免重复劳动。
 
+添加一个新功能，最好新建一个 feature 分支，完成后合并，最后删除分支。
+
+删除一个未合并的线程，使用：
+
+`git branch -D feature` 强制删除 `feature` 参数。
+
 
 ### 参考
 
