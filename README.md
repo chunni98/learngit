@@ -48,8 +48,13 @@
 
 `git push origin master` 把当前分支 `master` 推送到 origin。
 
+`git remote -v` 查看远程库信息。
 
+`git remote rm 库名` 删除库。
 
+`git clone git@github.com:xxx/xxx.git` 克隆一个本地库。
+
+主分支，`master` 分支。
 
 
 ### 参考
