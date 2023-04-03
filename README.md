@@ -66,6 +66,13 @@ git checkout dev
 ```
 切换到分支 `dev` 然后提交修改后，切换分支将无法看到修改。
 
+`git merge 分支名` 合并分支。（默认Fast forward）。
+
+`git merge --no-ff -m "提交信息" 分支名` 不使用 Fast forward。
+
+`git branch -d 分支名` 删除分支。
+
+git 鼓励使用分支完成某个任务，合并后删除分支。
 
 ### 参考
 
