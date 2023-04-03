@@ -64,6 +64,7 @@
 git branch dev
 git checkout dev
 ```
+切换到分支 `dev` 然后提交修改后，切换分支将无法看到修改。
 
 
 ### 参考
