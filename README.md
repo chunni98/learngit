@@ -104,6 +104,32 @@ dev 分支用来开发。需要发布版本时，再把 dev 分支合并到 main
 
 `git branch -D feature` 强制删除 `feature` 参数。
 
+推送分支：`git push origin dev`
+
+main 分支是主分支，因此要时刻与远程同步。
+
+dev 分支是开发分支，团队所有成员在上面工作，也需要与远程同步。
+
+bug 分支只用于在本地修复 bug。
+
+feature 分支是否推到远程，取决与是否需要合作。
+
+抓取分支
+
+`git clone git@github.com:xxx/xxx.git` 只会抓取 main 分支。
+
+`git checkout -b dev origin/dev` 抓取远程 dev 分支。
+
+多人协作的工作模式：
+
+1. `git push origin <分支>`
+2. 推送失败，则合并,`git fetch`，`git merge`。
+3. 合并有冲突，则解决冲突，在本地提交。
+4. 解决冲突后 `git push origin <分支>`
+5. 如果本地分支和远程分支的链接关系没有建立，则 `git branch --set-upstream-to <分支> origin/<分支>`
+
+
+
 
 ### 参考
 
