@@ -36,6 +36,17 @@
 
 `git reset HEAD 文件名` 把暂存区的修改撤销掉。
 
+`git rm` 从本地中删除文件。
+
+`git checkout -- 文件名` 用版本库的文件还原工作区的版本。从来没有添加到版本库的文件，是无法恢复的。
+
+`ssh-keygen -t rsa -C "youremail@example.com"` 创建 SSH Key。
+
+`git remote add origin git@github.com:xxxxxx/xxx.git` 添加远程库。
+
+远程库名字就是 origin。
+
+`git push origin master` 把当前分支 `master` 推送到 origin。
 
 
 
