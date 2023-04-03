@@ -18,6 +18,12 @@
 
 `git rm --cached .` 清空暂存区。
 
+`git log --oneline --graph --decorate --all` 查看提交日志。
+
+`HEAD` 表示当前版本，即最新的提交。`HEAD^` 上一个提交。`HEAD^100`，往上 100 个版本。
+
+
+
 
 
 
