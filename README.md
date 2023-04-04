@@ -235,6 +235,37 @@ dkms.conf
 obj/
 ```
 
+搭建 git 服务器：
+
+1. 安装 git。
+2. 创建 git 用户，运行 git 服务。
+3. 创建证书登录。
+4. 初始化 git 仓库。
+5. 禁用 shell 登录。
+6. 克隆远程库。
+
+```shell
+sudo apt-get install git
+sudo adduser git
+# 把所有要登陆的用户的公钥，即 id_rsa.pub 文件，导入到
+# /home/git/.ssh/authorized_keys 文件里，一行一个。
+# 选定一个目录作为 git 仓库，如 /srv/sample.git
+# 在 /srv 目录下执行命令：
+# 创建裸仓库，没有工作区
+sudo git init --bare sample.git
+# 服务器上的 git 仓库通常以 .git 结尾，把 owner 改为 git
+sudo chown -R git:git sample.git
+# 编辑 /etc/passwd 禁用 shell 登录
+git:x:1001:1001:,,,:/home/git:/bin/bash
+# 改为：
+git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+# git-shell 每次一登陆就自动退出。
+
+# 克隆远程仓库：
+
+git clone git@server:/srv/sample.git
+```
+
 
 
 
