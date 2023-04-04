@@ -34,7 +34,7 @@
 
 `git checkout -- 文件名` 丢弃工作区的修改。
 
-`git reset HEAD 文件名` 把暂存区的修改撤销掉。
+`git reset HEAD 文件名` 把暂存区的修改撤销掉，回滚。
 
 `git rm` 从本地中删除文件。
 
@@ -100,7 +100,7 @@ dev 分支用来开发。需要发布版本时，再把 dev 分支合并到 main
 
 添加一个新功能，最好新建一个 feature 分支，完成后合并，最后删除分支。
 
-删除一个未合并的线程，使用：
+删除一个未合并的分支，使用：
 
 `git branch -D feature` 强制删除 `feature` 参数。
 
@@ -122,11 +122,13 @@ feature 分支是否推到远程，取决与是否需要合作。
 
 多人协作的工作模式：
 
-1. `git push origin <分支>`
+1. `git push origin <分支>`,远程仓库同步到本地版本库，不会影响工作区。
 2. 推送失败，则合并,`git fetch`，`git merge`。
 3. 合并有冲突，则解决冲突，在本地提交。
 4. 解决冲突后 `git push origin <分支>`
 5. 如果本地分支和远程分支的链接关系没有建立，则 `git branch --set-upstream-to <分支> origin/<分支>`
+
+变基：`git rebase` 合并 commit 成直线。
 
 
 
