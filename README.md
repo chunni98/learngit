@@ -72,6 +72,8 @@ git checkout dev
 
 `git branch -d 分支名` 删除分支。
 
+`git push origin -d 分支名` 删除远程分支。
+
 git 鼓励使用分支完成某个任务，合并后删除分支。
 
 合并分支后可能存在冲突，修改冲突后重新提交合并即完成。
