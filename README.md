@@ -130,6 +130,35 @@ feature 分支是否推到远程，取决与是否需要合作。
 
 变基：`git rebase` 合并 commit 成直线。
 
+创建标签：`git lag v1.0` 在当前分支打标签。
+
+`git tag` 查看所有标签。
+
+`git tag v0.9 f52c633` 对某次 commit 打标签。
+
+`git tag -a v0.1 -m "xxx" 1094adb` 创建带说明的标签。
+
+`git show <tagname>` 查看标签说明。
+
+`git tag -d v0.1` 删除标签。
+
+创建的标签都只存储在本地，不会自动推送到远程。
+
+`git push origin <tagname>` 推送某个标签到远程。
+
+`git push origin --tags` 推送所有本地标签。
+
+从远程删除标签:
+
+1. 从本地删除。
+
+`git tag -d v0.9`
+
+2. 从远程删除。
+
+`git push origin :refs/tags/v0.9`
+
+
 
 
 
