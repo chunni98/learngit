@@ -158,6 +158,83 @@ feature 分支是否推到远程，取决与是否需要合作。
 
 `git push origin :refs/tags/v0.9`
 
+让 git 显示不同颜色：`git config --global color.ui true`
+
+在Git工作区的根目录下创建一个特殊的.gitignore文件，
+然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
+
+`git check-ignore -v 文件名`
+
+检查哪个规则忽略了文件。
+
+指定文件排除在 `.gitignore` 外：
+
+`!main.o`
+
+
+`c.gitignore` 文件示例：
+
+```
+.*
+!.gitignore
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+**/bin/*
+*.*~
+obj/
+```
+
 
 
 
