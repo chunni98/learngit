@@ -50,6 +50,286 @@ git config --global color.ui auto
 
 让命令的输出拥有更高的可读性。
 
+## 3 使用 Github 前的准备
+
+### 3.1 创建账号
+
+创建账号后，公开页面的 URL 即为：`http://github.com/username`。
+
+### 3.2 创建头像
+
+### 3.3 设置 SSH Key
+
+```shell
+ssh-keygen -t rsa -C "shachi1758@outlook.com"
+```
+
+创建成功后会在 `~/.ssh` 目录下生成 `id_rsa`私有密钥，`id_rsa.pub` 公钥。
+
+### 3.4 添加公开密钥
+
+为 github 账号添加公钥。
+
+添加成功后，使用 `ssh -T git@github.com` 验证。
+
+### 3.5 创建公开仓库
+
+**1. 仓库名**
+
+**2. 仓库描述**
+
+**3. 公开/私有仓库**
+
+**4. 初始化 README**
+
+**5. 添加 .gitignore**
+
+**6. 添加许可协议**
+
+一般选择 MIT 协议。实际使用时，只需将 LICENSE 文件加入仓库，在 README.md 中声明
+即可。
+
+MIT 许可协议一般具有如下特征：
+
+被授权人权利：被授权人有权利使用、复制、修改、合并、出版发行、散布、再授权和/或
+贩售软件及软件的副本，及授予被供应人同等权利，唯服从以下义务。被授权人义务：在
+软件和软件的所有副本中都必须包含以上版权声明和本许可声明。其他重要特性：此许可
+协议并非属copyleft的自由软件许可协议条款，允许在自由及开放源代码软件或非自由软
+件（proprietary software）所使用。MIT的内容可依照程序著作权者的需求更改内容。
+此亦为MIT与BSD（The BSD license, 3-clause BSD license）本质上不同处。MIT许可
+协议可与其他许可协议并存。另外，MIT条款也是自由软件基金会（FSF）所认可的自由软
+件许可协议条款，与GPL兼容。
+
+### 3.6 公开代码
+
+**1. 克隆仓库**
+
+将代码库 clone 到本地。
+
+`git clone git@github.com:username/repo-name.git`
+
+**2. 编写代码**
+
+如编写一个 `hello_world.cc` 文件：
+
+```cc
+#include <iostream>
+#include <cstdlib>
+
+
+int main(int argc, const char* argv[])
+{
+    std:cout<< "Hello,World"<<std::endl;
+
+    return EXIT_SUCCESS;
+}
+```
+
+使用命令：
+
+`git status` 查看仓库状态。
+
+**3. 提交文件**
+
+`git add hello_world.cc`，这样，这文件就进入了暂存区，可以由版本管理系统管理了。
+
+`git cmmmit -m "提交信息"` 将暂存区的文件提交到版本库。
+
+`git log` 查看提交日志。
+
+**4. push**
+
+将本地版本库推送到远程。
+
+`git push origin main`
+
+## 4. 实际操作学 git
+
+### 4.1 基本操作
+
+**1. 初始化仓库**
+
+`git init` 初始化成功，目录下就会生成 `.git` 目录，这个目录里存储着管理当前目录
+所需的数据。这个目录的内容被称作工作树。
+
+**2. 查看仓库状态**
+
+`git status` 用于显示仓库的状态。只要对 git 的工作树或者仓库进行操作，`git sta
+tus` 的显示结果就会发生变化。
+
+**3. 向暂存区添加文件**
+
+只是在工作树创建了文件，该文件并不会被记入版本管理对象中。
+
+暂存区（stage 或 index）是提交前的一个临时区域。
+
+`git add <文件名>`
+
+**4. 保存仓库的历史记录**
+
+`git commit -m "提交信息"`
+
+将暂存区的文件提交到本地版本库。
+
+不加 `-m` 选项，则执行后编辑器会启动，可以记述详细的提交信息。
+
+格式如下：第一行：用一行文件简述提交内容。第二行：空行。第三行及以后：详细内容。
+
+不写提交信息则会终止提交。
+
+提交完成后，查看状态，结果会显示工作树是干净的。
+
+**5. 查看提交日志**
+
+```shell
+$ git log
+
+commit 9f129bae19b2c82fb4e98cde5890e52a6c546922
+Author: hirocaster <hohtsuka@gmail.com>
+Date:   Sun May 5 16:06:492013 +0900
+
+    First commit
+```
+
+`9f129b` 是指向这个提交的哈希值。最后一行是提交信息。
+
+`git log --pretty=short` 只显示第一行简述信息。
+
+`git log 文件名` 只显示指定目录、文件的日志。
+
+`git log -p 文件名` 查看提交所带来的改动。
+
+**6. 查看更改前后的差别**
+
+`git diff` 查看工作树、暂存区、版本库之间的差别。
+
+`git status` 显示上次提交更新后的更改或者写入缓存的改动，而 git diff 一行一行
+地具体显示这些改动。
+
+如在 README.md 中写入 `# git 教程`。
+
+执行 `git diff` ，查看工作树和暂存区的差别：
+
+```shell
+$ git diff
+
+diff --git a/README.md b/README.md
+index e69de29..cb5dc9f 100644
+--- a/README.md
++++ b/README.md
+@@ -0,0 +1 @@
++# git教程
+```
+
+现在 `git add README.md` 将文件加入暂存区。
+
+查看已缓存和未缓存的所有差别：
+
+```shell
+$ git diff HEAD
+diff --git a/README.md b/README.md
+index e69de29..cb5dc9f 100644
+--- a/README.md
++++ b/README.md
+@@ -0,0 +1 @@
++# Git教程
+```
+
+### 4.2 分支的操作
+
+master 是 git 默认创建的分支，基本所有开发都是以这个分支为中心。
+
+**1. 显示分支**
+
+`git branch` 显示当前分支，分支名左侧标有`*`的是当前所在分支。
+
+**2. 创建、切换分支**
+
+`git checkout -b 分支名` 创建并切换到新分支。
+
+相当于连续执行：`git branch 分支名`，`git checkout 分支名`。
+
+创建多个分支，就可以在不互相影响的情况下同时进行多个功能的开发。
+
+**3 合并分支**
+
+`git merge --no-ff 分支名` 合并分支，并且记录下本次分支合并。
+
+编辑器启动，默认信息包含合并操作。
+
+`git merge --no-ff 分支名 -m "提交信息"`
+
+**4 以图标形式查看分支**
+
+`git log --graph` 以图标形式输出提交日志。
+
+### 4.3 更改提交的操作
+
+**1. 回溯历史版本**
+
+`git reset --hard 哈希值` 工作树、暂存区、版本库 HEAD 回溯到指定时间点。
+
+`git log` 只能查看以当前状态为终点的历史日志。
+
+`git reflog` 可以查看当前仓库的操作日志。
+
+**2. 消除冲突**
+
+冲突解决后，执行 `git add` 和 `git commit` 命令。
+
+**3. 修改提交信息**
+
+`git commit --amend`
+
+**4. 压缩历史**
+
+`git rebase -i` 将多个提交合并成一个。
+
+### 4.4 推送到远程仓库
+
+**1. 创建仓库**
+
+创建仓库时建议仓库名与本地仓库保持一致，并不要初始化 README。
+
+**2. 添加远程仓库**
+
+`git remote add 仓库别名 git@github.com:user-name/repo-name.git` 添加远程仓库。
+
+`git remote add origin git@github.com:github-book/git-tutorial.git` 将远程仓库
+的名称设置为 origin。
+
+**3. 推送至远程仓库**
+
+推送 main 分支：`git push -u origin main`。
+
+`-u` 参数可以在推送到同时，将 orgin 的 main 分支设置为本地仓库当前分支 upstream
+。以后使用 `git push`，`git pull` 可直接才 origin 的 main 分支获取内容。
+
+推送 dev 分支：
+
+```shell
+git checkout dev
+git push origin dev
+```
+
+### 4.5 从远程仓库获取
+
+**1. 获取远程仓库**
+
+`git clone git@github.com:username/repo-name.git [pathname]`
+
+默认处于 main 分支，同时系统会自动将 origin 设置成该远程仓库的标识符。
+
+`git branch -a` 查看本地仓库和远程仓库的分支信息。
+
+**2. 获取远程仓库的分支**
+
+`git checkout -b dev origin/dev` 新建分支并从远程仓库拉取。
+
+**3. 获取最新的远程仓库分支**
+
+`git pull origin dev`
+
 ## 参考
 
 - [Github 入门与实践](https://book.douban.com/subject/26462816/)
