@@ -550,7 +550,7 @@ fork -> clone -> 创建特性 branch -> 修改 -> 提交 -> 创建远程分支
 
 ## 9 使用 Github 的开发流程
 
-### 9.1 Github Flow 以部署为中心的开发模式
+#### 9.1 Github Flow 以部署为中心的开发模式
 
 1. 令 main 分支时常褒词可以部署的状态。
 2. 进行新的作业要从 main 分支创建新分支，新分支名称要具有描述性。
@@ -559,6 +559,38 @@ fork -> clone -> 创建特性 branch -> 修改 -> 提交 -> 创建远程分支
 5. 需要帮助或反馈时创建 Pull Request，以 Pull Request 进行交流。
 6. 代码审查，确认作业完成后与 main 分支合并。
 7. 与 main 分支合并后立刻部署。
+
+### 9.2 Git Flow 以发布为中心的开发模式
+
+1. dev 分支创建工作分支，实现功能的实现或修改。
+2. feature 分支的修改结束后，与 dev 分支进行合并，并删除 featrue-x 分支。
+3. 重复 1 和 2，不断实现功能，直到可以发布。
+4. release 分支，处理发布的各项工作。
+5. 发布工作完成后，与 main 分支合并，打上 tag 进行发布。
+6. 如果发布的软件出现 bug，以打了 tag 的版本为基础进行 hostfix。
+7. hotfix 分支基于 main 分支。cherry pick 到 dev 分支。
+
+推送前先获取最新 dev 分支或者合作开发的分支。
+
+feature 中进行的工作：
+
+0. `git fetch origin dev`
+1. 从 dev 分支创建 `feature-*` 分支
+2. 在 feature 分支中实现目标功能。
+3. 通过 github 向 dev 分支发送 pull request，而不是合并到本地 dev 分支。
+4. 接收其他开发者审查后，将 pull request 合并到 dev 分支。
+5. 删除 feature 分支。
+6. 更新本地 dev 分支。
+
+软件进入发布阶段，则给软件分配一个版本号，与 release 分支合并，打上 tag。
+
+今后只在 release 分支上进行 bug 修复，不做其他支持。
+
+合并到 main 分支的提交都要打上 tag。
+
+PR 合并到 main 分支后，再 PR 合并到 dev 分支。
+
+`git push --tags` 推送 tags。
 
 ## 参考
 
