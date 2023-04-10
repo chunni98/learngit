@@ -6,6 +6,8 @@
 
 `git commit -m "提交消息"` 把文件提交到 `HEAD`。
 
+`git commit` 提交并打开编辑器编写 commit message。
+
 `git status` 显示工作树状态。
 
 `git diff` 查看尚未缓存的改动 。
@@ -112,9 +114,9 @@ main 分支是主分支，因此要时刻与远程同步。
 
 dev 分支是开发分支，团队所有成员在上面工作，也需要与远程同步。
 
-bug 分支只用于在本地修复 bug。
+hotfix 分支只用于在本地修复 bug，命名：`hotfix-*`。
 
-feature 分支是否推到远程，取决与是否需要合作。
+feature 分支是否推到远程，取决与是否需要合作。命名约定：`feature-*`。
 
 抓取分支
 
