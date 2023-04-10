@@ -6,6 +6,8 @@
 
 `git commit -m "提交消息"` 把文件提交到 `HEAD`。
 
+`git commit` 提交并打开编辑器编写 commit message。
+
 `git status` 显示工作树状态。
 
 `git diff` 查看尚未缓存的改动 。
@@ -112,9 +114,9 @@ main 分支是主分支，因此要时刻与远程同步。
 
 dev 分支是开发分支，团队所有成员在上面工作，也需要与远程同步。
 
-bug 分支只用于在本地修复 bug。
+hotfix 分支只用于在本地修复 bug，命名：`hotfix-*`。
 
-feature 分支是否推到远程，取决与是否需要合作。
+feature 分支是否推到远程，取决与是否需要合作。命名约定：`feature-*`。
 
 抓取分支
 
@@ -125,7 +127,7 @@ feature 分支是否推到远程，取决与是否需要合作。
 多人协作的工作模式：
 
 1. `git push origin <分支>`,远程仓库同步到本地版本库，不会影响工作区。
-2. 推送失败，则合并,`git fetch`，`git merge`。
+2. 推送失败，则合并,`git fetch origin`，`git merge`。
 3. 合并有冲突，则解决冲突，在本地提交。
 4. 解决冲突后 `git push origin <分支>`
 5. 如果本地分支和远程分支的链接关系没有建立，则 `git branch --set-upstream-to <分支> origin/<分支>`
@@ -267,6 +269,20 @@ git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
 
 git clone git@server:/srv/sample.git
 ```
+
+**配置**
+
+配置保存在 `~/.gitconfig` 文件中。
+
+`git config -global core.editor vim` 修改默认编辑器。
+
+`git config --list` 查看所有配置。
+
+`git config --global user.name 名字` 设置账号名。
+
+`git config --global user.email 邮箱` 设置邮箱。
+
+`git config color.ui auto` 设置彩色输出。
 
 ### 参考
 

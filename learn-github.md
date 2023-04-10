@@ -330,6 +330,236 @@ git push origin dev
 
 `git pull origin dev`
 
+## 5 详细解说 Github 功能
+
+### 5.1 键盘快捷键
+
+`shift + /` 打开键盘快捷键。
+
+### 5.2 工具栏
+
+![](./res/tool-bar.png)
+
+**1. logo**
+
+点击 logo 刷新页面。
+
+**2. 搜索栏**
+
+**3. Pulls**
+
+查看自己的 pull request。
+
+**4. Issues**
+
+查看自己的 issues。
+
+**5. Codespaces**
+
+线上的编程环境，可以编写或者运行 Github 仓库中的代码。
+
+相当于一个线上编辑器。
+
+**6. Marketplace**
+
+Github 的开放平台或者扩展平台。
+
+提供两类扩展：apps 和 actions。
+
+**7.Explore**
+
+推送 Github 上的热门开源仓库。
+
+**8. 铃铛 logo**
+
+提示用户是否用新的通知。收到通知的同时会发送到用户的注册邮箱。
+
+**9. +**
+
+共有六个功能：
+
+1. New repository 创建新的仓库。
+2. import repository 导入仓库。
+3. New codespace 在线上编辑器创建新项目。
+4. New gist 创建新的 gist 库，gist ：github 保存文本片段的服务，可以用来记笔记、保存配置、记笔记、记录想法。
+5. New organization 创建组织，合作编程。
+6. New Project 创建新的项目，可以帮助组织工作，创建看板，定制工作流。
+
+**10 .头像**
+
+修改个人设置、账号设置。
+
+- Your Profile
+
+### 5.3 Your Profile
+
+**1. Overview**
+
+总览
+
+**2. Repositories**
+
+用户的所有仓库
+
+**3. Projects**
+
+用户创建的项目。
+
+**4. Stars**
+
+用户 star 过的仓库。
+
+**5. Packages**
+
+是一个包承载服务，完全和 Github 集成。可以将自己的package 打包上传。
+
+如 docker 包、maven 包、NuGet 包、npm 包、Container 等。
+
+### 5.4 issue
+
+issue 的功能：
+
+1. 发现软件的 BUG 并报告。
+2. 有事想向作者询问、探讨。
+3. 事先列出今后准备实施的任务。
+
+**issue 可以添加标签便于管理**
+
+**issue 可以添加里程碑以便管理任务。**
+
+**通过 commit 操作 issue**
+
+提交信息中包含 `#issue_num` 即可在 issue 下添加新的记录。
+
+提交信息中包含：
+
+```
+fix #24
+fixed #24
+fixes #24
+close #24
+resolve #24
+```
+
+等即可关闭 issue。
+
+issue 和 pull request 的编号通用。
+
+### 5.5 Pull Request
+
+**获取 Pull Request 的 diff/patch 格式文件**
+
+在 URL 末尾添加 diff/patch 即可。
+
+`https://github.com/username/reponame/pull/28.diff/patch`
+
+可以在代码中插入评论。
+
+### 5.6 Wiki
+
+Wiki 可以编写文档，支持 GFW 语法，可以通过 git 进行管理。
+克隆到本地然后创建、编辑、提交，push。
+
+一般情况下，wiki 中记载着软件相关 FAQ、文档、代码示例和解说等信息。
+
+所有的 wiki 页面都可以显示侧边栏。只要创建名为 `_sidebar` 的页面即可。
+
+### 5.7 Settings
+
+修改仓库名称、设置显示仓库 URL 时默认显示分支等。
+
+可以更改 features 和 issue 等。
+
+可以创建 github pages。
+
+**Collaborators**
+
+用户可以设置仓库的访问权限，赋予其他用户读写仓库的权限。
+
+在公司等多人共同开发的组织中，建议使用组织账户。
+
+**Deploy Keys**
+
+添加用于部署的公钥，允许只读访问，每个仓库要赋予不同的密钥对。
+
+### 5.8 其他功能
+
+**Github Pages**
+
+托管静态 HTML，可以绑定域名。
+
+**Github Jobs**
+
+**Github Enterprise**
+
+**Github API**
+
+## 6 Pull Request
+
+### 6.1 Pull Request 的概要
+
+Pull Request 是自己修改源代码后，请求对方仓库采纳该修改时采取的一种行为。
+
+流程：
+
+fork -> clone -> 创建特性 branch -> 修改 -> 提交 -> 创建远程分支
+
+不 fork 发起 Pull Request：
+
+如果用户对该仓库有编辑权限，可以直接创建分支，从分支发送 Pull Request 到主分支。
+
+### 6.2 仓库的维护
+
+通常来说 clone 的仓库与原仓库没有关系。我们需要将原仓库设为远程仓库，从该仓库获取数据后
+与本地仓库进行合并。
+
+将 `octocat/Spoon-Knife` 作为原仓库，fork 然后 clone。
+
+给原仓库设置名称，给原仓库设置 upstream 名称，将其作为远程仓库。
+
+`git remote add upstream git://github.com/octocat/Spoon-Knife.git`
+
+即可以使用命令：
+
+`git fetch upstream` 获取最新源代码。
+
+这样，upstream/main 分支与当前 main 分支就可以合并了。
+
+`git merge`
+
+
+## 7 接收 Pull Request
+
+1. 代码审查
+2. 对比差异
+3. 本地获取发送方的远程仓库
+4. 创建用于检查的分支
+5. 合并分支。（git merge PRsender/work)，将 work 分支的内容合并到测试分支。
+6. 删除分支。(git branch -D check)
+7. 合并到主分支。
+8. git push。
+
+## 8 与 Github 相互协作的工具和服务
+
+1. hub 命令
+2. Travis Ci
+3. Coveralls
+4. Gemnasium
+5. Code Climate
+6. Jenkins
+
+## 9 使用 Github 的开发流程
+
+### 9.1 Github Flow 以部署为中心的开发模式
+
+1. 令 main 分支时常褒词可以部署的状态。
+2. 进行新的作业要从 main 分支创建新分支，新分支名称要具有描述性。
+3. 在 2 新建的本地仓库分支中进行提交。
+4. 在 github 端仓库创建同名分支，定期 push。
+5. 需要帮助或反馈时创建 Pull Request，以 Pull Request 进行交流。
+6. 代码审查，确认作业完成后与 main 分支合并。
+7. 与 main 分支合并后立刻部署。
+
 ## 参考
 
 - [Github 入门与实践](https://book.douban.com/subject/26462816/)
