@@ -528,9 +528,37 @@ fork -> clone -> 创建特性 branch -> 修改 -> 提交 -> 创建远程分支
 `git merge`
 
 
+## 7 接收 Pull Request
 
+1. 代码审查
+2. 对比差异
+3. 本地获取发送方的远程仓库
+4. 创建用于检查的分支
+5. 合并分支。（git merge PRsender/work)，将 work 分支的内容合并到测试分支。
+6. 删除分支。(git branch -D check)
+7. 合并到主分支。
+8. git push。
 
+## 8 与 Github 相互协作的工具和服务
 
+1. hub 命令
+2. Travis Ci
+3. Coveralls
+4. Gemnasium
+5. Code Climate
+6. Jenkins
+
+## 9 使用 Github 的开发流程
+
+### 9.1 Github Flow 以部署为中心的开发模式
+
+1. 令 main 分支时常褒词可以部署的状态。
+2. 进行新的作业要从 main 分支创建新分支，新分支名称要具有描述性。
+3. 在 2 新建的本地仓库分支中进行提交。
+4. 在 github 端仓库创建同名分支，定期 push。
+5. 需要帮助或反馈时创建 Pull Request，以 Pull Request 进行交流。
+6. 代码审查，确认作业完成后与 main 分支合并。
+7. 与 main 分支合并后立刻部署。
 
 ## 参考
 

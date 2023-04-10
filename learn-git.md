@@ -127,7 +127,7 @@ feature 分支是否推到远程，取决与是否需要合作。命名约定：
 多人协作的工作模式：
 
 1. `git push origin <分支>`,远程仓库同步到本地版本库，不会影响工作区。
-2. 推送失败，则合并,`git fetch`，`git merge`。
+2. 推送失败，则合并,`git fetch origin`，`git merge`。
 3. 合并有冲突，则解决冲突，在本地提交。
 4. 解决冲突后 `git push origin <分支>`
 5. 如果本地分支和远程分支的链接关系没有建立，则 `git branch --set-upstream-to <分支> origin/<分支>`
@@ -269,6 +269,20 @@ git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
 
 git clone git@server:/srv/sample.git
 ```
+
+**配置**
+
+配置保存在 `~/.gitconfig` 文件中。
+
+`git config -global core.editor vim` 修改默认编辑器。
+
+`git config --list` 查看所有配置。
+
+`git config --global user.name 名字` 设置账号名。
+
+`git config --global user.email 邮箱` 设置邮箱。
+
+`git config color.ui auto` 设置彩色输出。
 
 ### 参考
 
