@@ -494,6 +494,41 @@ Wiki 可以编写文档，支持 GFW 语法，可以通过 git 进行管理。
 
 **Github API**
 
+## 6 Pull Request
+
+### 6.1 Pull Request 的概要
+
+Pull Request 是自己修改源代码后，请求对方仓库采纳该修改时采取的一种行为。
+
+流程：
+
+fork -> clone -> 创建特性 branch -> 修改 -> 提交 -> 创建远程分支
+
+不 fork 发起 Pull Request：
+
+如果用户对该仓库有编辑权限，可以直接创建分支，从分支发送 Pull Request 到主分支。
+
+### 6.2 仓库的维护
+
+通常来说 clone 的仓库与原仓库没有关系。我们需要将原仓库设为远程仓库，从该仓库获取数据后
+与本地仓库进行合并。
+
+将 `octocat/Spoon-Knife` 作为原仓库，fork 然后 clone。
+
+给原仓库设置名称，给原仓库设置 upstream 名称，将其作为远程仓库。
+
+`git remote add upstream git://github.com/octocat/Spoon-Knife.git`
+
+即可以使用命令：
+
+`git fetch upstream` 获取最新源代码。
+
+这样，upstream/main 分支与当前 main 分支就可以合并了。
+
+`git merge`
+
+
+
 
 
 
