@@ -58,7 +58,7 @@
 
 主分支，`master` 分支。
 
-`git checkout -b dev` 创建并切换到 dev 分支。
+`git checkout -b dev main` 基于 main 分支创建并切换到 dev 分支。
 
 相当于：
 
