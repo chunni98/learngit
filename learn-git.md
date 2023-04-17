@@ -284,6 +284,10 @@ git clone git@server:/srv/sample.git
 
 `git config color.ui auto` 设置彩色输出。
 
+`git remote show origin` 查看本地分支和远程的追踪情况。
+
+`git remote prune origin` 修剪已不存在的分支（远程已删除，本地还保留）
+
 ### 参考
 
 - [廖雪峰 git 教程](https://www.liaoxuefeng.com/wiki/896043488029600)
