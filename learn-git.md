@@ -134,6 +134,8 @@ feature 分支是否推到远程，取决与是否需要合作。命名约定：
 
 变基：`git rebase` 合并 commit 成直线。
 
+`git rebase -i <合并的前一个提交>` 启用变基操作，进入编辑界面，需要合并的提交保留一个是pick，其它的改为s（squash）。
+
 创建标签：`git lag v1.0` 在当前分支打标签。
 
 `git tag` 查看所有标签。
